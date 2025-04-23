@@ -1,0 +1,103 @@
+<!-- order-confirmation.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Confirmation</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #f3f4f6, #dbeafe);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .card {
+        background-color: white;
+        padding: 4rem 3rem;
+        border-radius: 15px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 100%;
+        max-width: 30%;
+        animation: pop 0.5s ease-in-out;
+      }
+
+      @keyframes pop {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      h1 {
+        color: #1f2937;
+      }
+
+      .table-number {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #3b82f6;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+
+      li {
+        background-color: #e0f2fe;
+        margin: 0.4rem 0;
+        padding: 0.6rem;
+        border-radius: 10px;
+        color: #0c4a6e;
+      }
+
+      .thank-you {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #059669;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Order Placed ✅</h1>
+      <div class="table-number" id="table-number"></div>
+      <ul id="order-items"></ul>
+      <div class="thank-you">Thank you for your order! 🎉</div>
+    </div>
+
+    <script>
+      // Get the table and order from localStorage
+      const table = localStorage.getItem("selectedTable") || "Not Selected";
+      const orderItems = JSON.parse(localStorage.getItem("orderItems")) || [];
+
+      // Display the table number
+      document.getElementById("table-number").textContent = `Table: ${table}`;
+
+      // Display the ordered items
+      const ul = document.getElementById("order-items");
+      orderItems.forEach((item) => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} x ${item.quantity} = Rs ${
+          item.quantity * item.price
+        }`;
+        ul.appendChild(li);
+      });
+    </script>
+  </body>
+</html>
