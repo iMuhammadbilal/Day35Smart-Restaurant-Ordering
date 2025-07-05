@@ -161,3 +161,79 @@ ul {
   font-size: 20px;
   font-weight: 600;
 }
+
+/* media queries for menu itmes  */
+@media (max-width: 900px) {
+  .menu-item {
+    width: calc(50% - 20px); /* 2 items per row with gap */
+  }
+}
+
+@media (max-width: 600px) {
+  .menu-item {
+    width: 100%; /* 1 item per row */
+  }
+}
+@media (max-width: 400px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .menu-item {
+    padding: 20px 10px; /* Adjust padding for smaller screens */
+  }
+  
+  .menu-item img {
+    height: 120px; /* Adjust image height for smaller screens */
+  }
+}
+@media (max-width: 300px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .menu-item {
+    padding: 15px 5px; /* Further adjust padding for very small screens */
+  }
+  
+  .menu-item img {
+    height: 100px; /* Further adjust image height for very small screens */
+  }
+}
+
+/* media queries for place order */
+@media (max-width: 600px) {
+  .place-order-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+}
+@media (max-width: 400px) {
+  .place-order-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+  
+  .total-display {
+    font-size: 18px;
+  }
+  
+  .order-list {
+    font-size: 20px;
+  }
+}
+@media (max-width: 300px) {
+  .place-order-btn {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+  
+  .total-display {
+    font-size: 16px;
+  }
+  
+  .order-list {
+    font-size: 18px;
+  }
+}
