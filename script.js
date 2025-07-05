@@ -4,9 +4,9 @@ const orderList = document.createElement("ul");
 const totalDisplay = document.createElement("p");
 const placeOrderBtn = document.createElement("button");
 
-document.querySelector(".container").appendChild(orderList);
-document.querySelector(".container").appendChild(totalDisplay);
-document.querySelector(".container").appendChild(placeOrderBtn);
+document.querySelector(".container").appendChild(orderList); // Append orderList to the container 
+document.querySelector(".container").appendChild(totalDisplay); // Append totalDisplay to the container
+document.querySelector(".container").appendChild(placeOrderBtn); // Append placeOrderBtn to the container
 
 placeOrderBtn.innerText = "🧾 Place Order";
 placeOrderBtn.classList.add("place-order-btn");
@@ -14,19 +14,22 @@ totalDisplay.classList.add("total-display");
 console.log(placeOrderBtn);
 
 
-let order = [];
+let order = []; // Array to store order items
+console.log(order);
 
-addButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const itemElement = button.closest(".menu-item");
-    const name = itemElement.querySelector("h3").innerText;
-    const priceText = itemElement.querySelector("p").innerText;
-    // console.log(`Adding ${name} to order...`);
+addButtons.forEach(button => { // Select each button
+  console.log(`Adding event listener to button: ${button}`);
+  button.addEventListener("click", () => { // Add click event listener to each button 
+    const itemElement = button.closest(".menu-item"); // Find the closest .menu-item element
+    const name = itemElement.querySelector("h3").innerText; // Get the name of the item
+    const priceText = itemElement.querySelector("p").innerText; // Get the price of the item
+    console.log(`Adding ${name} to order...`);
     console.log(`Price: ${priceText}`);
     
     const price = guessPrice(name); // Function to simulate price
 
-    const existingItem = order.find(item => item.name === name);
+    const existingItem = order.find(item => item.name === name); // Check if the item already exists in the order
+    console.log(`Existing item: ${existingItem}`);
     if (existingItem) {
       existingItem.quantity++;
     } else {
@@ -37,11 +40,11 @@ addButtons.forEach(button => {
   });
 });
 
-function updateOrderDisplay() {
-  orderList.innerHTML = "";
-  let total = 0;
+function updateOrderDisplay() {  // Function to update the order display
+  orderList.innerHTML = ""; // Clear the order list
+  let total = 0; // Initialize total to 0
 
-  order.forEach(item => {
+  order.forEach(item => { // Loop through each item in the order
     const li = document.createElement("li");
     li.innerText = `${item.name} x ${item.quantity} = Rs ${item.quantity * item.price}`;
     orderList.appendChild(li);
@@ -74,7 +77,7 @@ function updateOrderDisplay() {
 // Simulate price by name
 
  
-placeOrderBtn.addEventListener("click", () => {  //
+placeOrderBtn.addEventListener("click", () => {  // Function to handle order placement
     if (order.length === 0) {
       alert("👀 Please add items to your order.");
       return;
@@ -95,7 +98,8 @@ placeOrderBtn.addEventListener("click", () => {  //
     updateOrderDisplay();
   });
   
-function guessPrice(name) {
+function guessPrice(name) { // Function to simulate price based on name
+  // Simulate prices based on item names
   const prices = {
     "Classic Burger": 250,
     "Cheese Pizza": 300,
